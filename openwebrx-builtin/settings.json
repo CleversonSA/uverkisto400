@@ -73,6 +73,32 @@
                         "max": 20.0
                     },
                     "direct_sampling": 0
+                },
+                "9798e6c0-9aaa-4c06-8f05-35d58eb308be": {
+                    "name": "[HF] 40m band",
+                    "rf_gain": "auto",
+                    "waterfall_levels": {
+                        "min": -60.0,
+                        "max": 20.0
+                    },
+                    "center_freq": 7074000,
+                    "samp_rate": 2400000,
+                    "start_freq": 7076000,
+                    "start_mod": "usb",
+                    "direct_sampling": 2
+                },
+                "cab61de1-8b3b-4fa0-b918-d29f8d3716e2": {
+                    "name": "[HF] 80m band",
+                    "rf_gain": "auto",
+                    "waterfall_levels": {
+                        "min": -80.0,
+                        "max": 20.0
+                    },
+                    "center_freq": 3573000,
+                    "samp_rate": 2400000,
+                    "start_freq": 3625000,
+                    "start_mod": "lsb",
+                    "direct_sampling": 2
                 }
             },
             "always-on": true

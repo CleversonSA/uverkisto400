@@ -23,6 +23,12 @@ if [ ! -e "/bin/cmatrix" ]; then
 
 fi
 
+if [ ! -e "/usr/bin/tty-clock" ]; then
+   echo "tty-clock not found!"
+   echo "Please install tty-clock package first"
+   exit -1
+fi
+
 if [ ! -e "/bin/cmus" ]; then
    
    echo "CMUS not found!"
@@ -47,6 +53,8 @@ MAIN_MENU=`/bin/dialog  \
 	    "F" "Music player" \
 	    "G" "SDR Server" \
 	    "H" "SDR Receiver" \
+       "I" "Launch X app" \
+	    "W" "Clock" \
 	    "X" "Cmatrix" \
 	    "Y" "Reboot system" \
 	    "Z" "Shutdown system" \
@@ -96,6 +104,7 @@ fi
 
 if [ "$MAIN_MENU" == "D" ]; then
 
+   rm -f ~/.config/lxsession/LXDE-pi/autostart
    startx
 
 fi
@@ -122,10 +131,25 @@ fi
 
 if [ "$MAIN_MENU" == "H" ]; then
 
+   rm -f /tmp/data.tmp
    /usr/local/bin/ustellara -e /tmp/data.tmp
 
 fi
 
+
+if [ "$MAIN_MENU" == "I" ]; then
+
+   rm -f ~/.config/lxsession/LXDE-pi/autostart
+   ./rpi-x-launch.sh
+
+fi
+
+
+if [ "$MAIN_MENU" == "W" ]; then
+
+   /usr/bin/tty-clock -Sc 
+
+fi
 
 if [ "$MAIN_MENU" == "X" ]; then
 
