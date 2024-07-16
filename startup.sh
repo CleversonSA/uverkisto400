@@ -53,7 +53,9 @@ MAIN_MENU=`/bin/dialog  \
 	    "F" "Music player" \
 	    "G" "SDR Server" \
 	    "H" "SDR Receiver" \
-       "I" "Launch X app" \
+      "I" "Launch X app" \
+			"J" "Currency clock" \
+			"V" "Custom scripts launcher" \
 	    "W" "Clock" \
 	    "X" "Cmatrix" \
 	    "Y" "Reboot system" \
@@ -132,7 +134,16 @@ fi
 if [ "$MAIN_MENU" == "H" ]; then
 
    rm -f /tmp/data.tmp
-   /usr/local/bin/ustellara -e /tmp/data.tmp
+
+   if [ ! -e "/bin/espeak" ]; then
+	   
+       /usr/local/bin/ustellara -e /tmp/data.tmp
+
+   else
+
+       /usr/local/bin/ustellara -v 100 -e /tmp/data.tmp
+
+   fi
 
 fi
 
@@ -144,6 +155,18 @@ if [ "$MAIN_MENU" == "I" ]; then
 
 fi
 
+if [ "$MAIN_MENU" == "J" ]; then
+
+		./rpi-cb-clock.sh --update
+    ./rpi-cb-clock.sh
+
+fi
+
+if [ "$MAIN_MENU" == "V" ]; then
+
+   ./rpi-launcher.sh
+
+fi
 
 if [ "$MAIN_MENU" == "W" ]; then
 

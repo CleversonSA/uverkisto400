@@ -35,6 +35,7 @@ MAIN_MENU=`/bin/dialog  \
             --menu 'Available notes' \
             0 0 0 \
 	    "new" '(New daily note)' \
+	    "clear" '(Remove temp files)' \
             ${AVAILABLE_NOTES} \
             "exit" 'Quit App' 2>&1 > /dev/tty` 
 clear
@@ -52,6 +53,17 @@ if [ "$MAIN_MENU" == "exit" ] || [ "$MAIN_MENU" == "cancel" ] || [ "$MAIN_MENU" 
     clear
     exit 0
     
+fi
+
+if [ "$MAIN_MENU" == "clear" ]; then
+
+	/bin/dialog --title 'Clear' \
+		--infobox '\nCleaning temporary files...\n' \
+		0 0
+	/bin/sleep 1
+	rm -f ./daily_notes/.*.swp
+	clear
+	continue
 fi
 
 
